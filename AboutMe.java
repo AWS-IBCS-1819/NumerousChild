@@ -35,7 +35,7 @@ public class AboutMe{
     String userIn = input.next();
     if(userIn.equals("1")){
       System.out.println("a. Wednesday through Monday \nb. Tuesdays");
-      Scanner colorInp = new Scanner(System.in);
+      Scanner colorInp = new Scanner(System.in); //scanner for mutable variable
       String colorIn = colorInp.next();
       if(colorIn.equals("a")){
         System.out.println(color);
@@ -52,7 +52,7 @@ public class AboutMe{
     }
     if(userIn.equals("4")){
       System.out.println("a. 4am-12am \n b. 12am-2am");
-      Scanner blah = new Scanner(System.in);
+      Scanner blah = new Scanner(System.in); //scanner for mutable variable
       String interIn = blah.next();
       if(interIn.equals("a")){
         System.out.println(interest);
