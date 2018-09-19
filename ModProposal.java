@@ -31,7 +31,7 @@ public class ModProposal {
 
     //go to string builder api and check out index to see what you can do with this text file
     int num = 0;
-    for (int i = 0; i < myStr.capacity() - 4; i++){
+    for (int i = 0; i < myStr.length() - 4; i++){
       if (myStr.substring(i, i + 4).equals("baby")){
         num++;
       }
@@ -41,7 +41,7 @@ public class ModProposal {
     }
     System.out.println("Baby is mentioned " + Integer.toString(num) + " times in A Modest Proposal.");
 
-//still an error but class ended
+
   }
 
 
