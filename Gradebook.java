@@ -17,16 +17,17 @@ public class Gradebook{
 
         Scanner scan = new Scanner(Syemtem.in);
         String scan = scan.next();
+
         if(scan.equals("1")){//mean of grades
 
         }
-        if(scan.equals("2")){
+        if(scan.equals("2")){//number of a's, b's, etc
 
         }
-        if(scan.equals("3")){
+        if(scan.equals("3")){//highest grade
 
         }
-        if(scan.equals("4")){
+        if(scan.equals("4")){//lowest grade
 
         }
         if(scan.equals("5")){//code for printing out subject and teacher
@@ -34,9 +35,9 @@ public class Gradebook{
           myStr.append(sc.nextLine());
           System.out.println(myStr);/*
         }
-        if(scan.equals("6")){
-
-        }
+        if(scan.equals("6")){//roster*/
+          myStr.append(sc.)
+        /*}
         else{
           System.out.println("Sorry. We don't understand that request.");
         }
