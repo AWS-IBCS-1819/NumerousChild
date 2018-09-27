@@ -1,8 +1,8 @@
-
 import java.util.*;
 import java.io.*;
 
 public class Gradebook{
+
 
   public static void main(String[] args) {
 
@@ -23,8 +23,10 @@ public class Gradebook{
     int D = 0;
     int F = 0;
 
+    Double doub =  null;
+
     for(int i = 0; i < grades.length(); i = i+5){//for loop to translate numbers from grades string into Double
-      Double doub = Double.parseDouble(grades.substring(i, i+4));
+      doub = Double.parseDouble(grades.substring(i, i+4));
       numZ++;
       added = added + doub;
       if (high < doub){//if statement for highest/lowest grades
@@ -65,8 +67,8 @@ public class Gradebook{
 
         System.out.println("Choose which you would like to see: \n1. Mean Grades \n2. Grade Spread \n3. Highest Grade \n4. Lowest Grade \n5. Class Subject and Teacher \n6. Student Roster");
 
-        Scanner scan = new Scanner(Syemtem.in);
-        String scan = scan.next();
+        Scanner scannerr = new Scanner(System.in);
+        String scan = scannerr.next();
 
         if(scan.equals("1")){//mean of grades
           System.out.println("The mean of all the class grades is " + average);
@@ -90,7 +92,7 @@ public class Gradebook{
         while (sc.hasNext()){
           /*forRos.append(sc.next() + " ");
           forRos.append(sc.next() + " " + "\n");*/
-          Scanner skipper = new Scanner(sc);
+          Scanner skipper = new Scanner(randtxt);
           skipper.skip(":" + doub + "%");
           forRos.append(skipper.next() + " ");
           forRos.append(skipper.next() + " " + "\n");
@@ -98,9 +100,9 @@ public class Gradebook{
           System.out.println("The student roster is ");
           System.out.println(forRos);
         }
-        else{
+        /*else{
           System.out.println("Sorry. We don't understand that request.");
-        }
+        }*/
 
         while (sc.hasNext()){
           myStr.append(sc.nextLine() + "\n");
