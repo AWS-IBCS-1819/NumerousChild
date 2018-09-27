@@ -11,6 +11,8 @@ public class Gradebook{
     StringBuilder myStr = new StringBuilder();//StringBuilder for class subject and teacher name
     StringBuilder forRos = new StringBuilder();//StringBuilder for class roster
     StringBuilder grades = new StringBuilder();//StringBuilder for all of the grades
+    StringBuilder no = new StringBuilder();
+    StringBuilder ohno = new StringBuilder();
 
     int numZ = 0; //number of grades (default setting)
     Double added = 0.0; //sum of all the grades (default setting)
@@ -65,6 +67,17 @@ public class Gradebook{
         File randtxt = new File("grades.txt");
         Scanner sc = new Scanner(randtxt);
 
+        myStr.append(sc.nextLine());
+
+        while (sc.hasNext()){
+          /*forRos.append(sc.next() + " ");
+          forRos.append(sc.next() + " " + "\n");*/
+          forRos.append(sc.next() + " ");
+          forRos.append(sc.next() + " " + "\n");
+          no.append(sc.next());
+          ohno.append(sc.next());
+        }
+
         System.out.println("Choose which you would like to see: \n1. Mean Grades \n2. Grade Spread \n3. Highest Grade \n4. Lowest Grade \n5. Class Subject and Teacher \n6. Student Roster");
 
         Scanner scannerr = new Scanner(System.in);
@@ -84,19 +97,11 @@ public class Gradebook{
         }
         if(scan.equals("5")){//code for printing out subject and teacher
 
-          myStr.append(sc.nextLine());
           System.out.println("The name of the class and teacher is ");
           System.out.println(myStr);
         }
         if(scan.equals("6")){//roster
-        while (sc.hasNext()){
-          /*forRos.append(sc.next() + " ");
-          forRos.append(sc.next() + " " + "\n");*/
-          Scanner skipper = new Scanner(randtxt);
-          skipper.skip(":" + doub + "%");
-          forRos.append(skipper.next() + " ");
-          forRos.append(skipper.next() + " " + "\n");
-        }
+
           System.out.println("The student roster is ");
           System.out.println(forRos);
         }
