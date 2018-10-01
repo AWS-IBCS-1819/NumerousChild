@@ -14,12 +14,12 @@ public class LoopExamples{
     Scanner twoA = new Scanner(System.in);//scans input for a y value since it is meant to be unknown
     int y = twoA.nextInt();
     System.out.println("Input a value for x");
-    Scanner twoB = new Scanner(Sytem.in);
+    Scanner twoB = new Scanner(System.in);
     int x = twoB.nextInt();
-    for(int i = x; i < y; i++){//i starts at x value; the loop continues until i is less than y; adds 1 to i until then
+    for(int i = x; i < y + 1; i++){//i starts at x value; the loop continues until i is less than y; adds 1 to i until then
       sum = sum + i;
     }//for this problem if you meant the sum of all numbers between x and y INCLUDING y then I would do i =< y instead of i < y
-    return sum;
+    System.out.println(sum);
 
 //loop for #3
     System.out.println("Input a series of numbers as a string");
@@ -30,24 +30,24 @@ public class LoopExamples{
     for(int i = 0; i < stringIndex + 1; i++){//first loop to go through all the numbers in the string
       i = number;
       for(int d = 0; d < stringIndex + 1; d++){//second loop to compare i to each number in the loop. I need something in here to not compare i to i.
-        if(d = i){
+        if(d = i){//this would not work; error here bc d=i can't be a thing
           amountOfnum = amountOfnum + 1;
         }
       }
-      return amountOfnum;
     }
-    return number;
+    System.out.println(amountOfnum);
+    System.out.println(number);
 
 
 //loop for #5
     System.out.println("Input a value for x");
     Scanner five = new Scanner(System.in);
     int x = five.nextInt();
-    int product = 1;
+    long fact = 1;
     for(int i = 1; i<=x; i++){
-      product = product * i;
+      fact = fact * i;
     }
-    return product;
+    System.out.println(fact);
 
   }
 }
