@@ -10,9 +10,11 @@ public class Reverse{
 
 //recursive
   public static String recursive(String w){ //recursive
+    //base case
     if(w.length() <= 1){//if the word is 0 or no letters
       return w;//then just return the word again
     }
+    //recursively defined
     else{
       return recursive(w.substring(1)) + w.charAt(0);//go through the word but save the first letter to the end.
       //this recursive method is taking the first chunk (substring) of the word and leaving the last letter to start the new string
