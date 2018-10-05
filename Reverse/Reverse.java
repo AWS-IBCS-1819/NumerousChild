@@ -8,6 +8,7 @@ import java.util.*;
 
 public class Reverse{
 
+//recursive
   public static String recursive(String w){ //recursive
     if(w.length() <= 1){//if the word is 0 or no letters
       return w;//then just return the word again
