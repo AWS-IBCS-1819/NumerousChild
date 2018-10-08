@@ -4,6 +4,6 @@ public class PokerHand{
 
     Deck d = new Deck();
 
-    System.out.println(d.card);
+    System.out.println(d.cards);
   }
 }
