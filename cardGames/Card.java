@@ -1,13 +1,13 @@
 public class Card {
 
-  Int value;
+  int value;
   String name;
 
   public void setName(String n) {
     name = n;
   }
 
-  public void setValue(Int v) {
+  public void setValue(int v) {
     value = v;
   }
 
