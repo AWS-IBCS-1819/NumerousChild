@@ -5,41 +5,25 @@ public class Blackjack {
   Deck d;
   ArrayList<Card> userHand;
   ArrayList<Card> compHand;
+  //need to shuffle cards and reset them.
 
   public Blackjack(){
 
   }
 
-  /*public ArrayList<String> giveHand(ArrayList<Card> userHand){//I think this needs to be a while loop
-
-    userHand.add(d.drawCard());
-    return userHand;//userHand is an ArrayList<Card> and thus can't be converted to an ArrayList<String>
+  /*public ArrayList<String> giveHand(ArrayList<Card> hand){//I think this needs to be a while loop
+    ArrayList<String> given = new ArrayList<String>();
+    hand.add(d.drawCard());
+    for(int j = 0; j <= hand.size(); j++){
+      hand.get(j).getName();
+      given = hand.get(j).getName();//error = string can't be converted to ArrayList<String> (getName is the string from Card.java)
+    }
+    return given;
+    //System.out.print(userHand);
   }
+DON'T NEED THIS METHOD. JUST ADD TWO CARDS TO USERHAND AND COMPHAND SEPARATELY IN MAIN
 */
   public Integer calculateHand(ArrayList<Card> handList){
-    //handList = new ArrayList<Integer>();
-    /*for(int i=0; i<=handList.size(); i++){
-    if(Card.getValue() == 11){
-      handList.add(10);
-    }
-    else if(Card.getValue() == 12){
-      handList.add(10);
-    }
-    else if(Card.getValue() == 13){
-      handList.add(10);
-    }
-    else if(Card.getValue() == 1){
-      handList.add(11);
-    }
-    else{
-      handList.add(Card.getValue());
-    }
-  }
-    int calc = 0;
-    for(int i = 1; i<= handList.size(); i++){
-      calc = calc + handList.get(i);
-      return calc;
-    }*/
     int total = 0;
     for(int i = 0; i <= handList.size(); i++){
       handList.get(i).getValue();
@@ -51,10 +35,11 @@ public class Blackjack {
   public static void main(String[] args) {
 
     Blackjack b = new Blackjack();//don't forget blackjack object
+    b.d.shuffle();
 
     System.out.println("Welcome to Blackjack.");
 
-    //System.out.println("Your hand: \n" + b.giveHand(b.userHand)); //print out cards dealt
+    System.out.println("Your hand: \n" + b.giveHand(b.userHand)); //print out cards dealt
     System.out.println("Value: \n" + b.calculateHand(b.userHand));//print integer value from calculateHand method
 
     /*System.out.println("Your opponent is showing a " + giveHand(compHand));
