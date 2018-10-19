@@ -2,23 +2,45 @@ import java.util.*;
 
 public class Blackjack {
 
-  Deck d = d.Card.shuffle();
+  Deck d;
+  Deck b = d.shuffle();
   ArrayList<Card> userHand;
   ArrayList<Card> compHand;
 
-  public Backjack(){
+  public Blackjack(){
 
   }
 
   public ArrayList<String> giveHand(ArrayList<Card> userHand){//I think this needs to be a while loop
-    userHand.add(d.Card.drawCard());
+    while()
+    userHand.add(d.drawCard());
     return hand;
+
+    b.userHand.add(b.d.drawCard());
   }
 
-  public Integer calculateHand(){
-    
-    return user;
-    return puter;
+  public Integer calculateHand(ArrayList<Card> handList){
+    //handList = new ArrayList<Integer>();
+    if(b.Card.getValue() == 11){
+      handList.add(10);
+    }
+    else if(b.Card.getValue() == 12){
+      handList.add(10);
+    }
+    else if(b.Card.getValue() == 13){
+      handList.add(10);
+    }
+    else if(b.Card.getValue() == 1){
+      handList.add(11);
+    }
+    else{
+      handList.add(Card.getValue());
+    }
+    int calc = 0;
+    for(int i = 1; i<= handList.size(); i++){
+      calc = calc + handList.get(i);
+      return calc;
+    }
   }
 
   public static void main(String[] args) {
@@ -27,10 +49,10 @@ public class Blackjack {
 
     System.out.println("Welcome to Blackjack.");
 
-    System.out.println("Your hand: \n" + giveHand()); //print out cards dealt
-    System.out.println("Value: \n" + value);//print integer value from calculateHand method
+    System.out.println("Your hand: \n" + giveHand(userHand)); //print out cards dealt
+    System.out.println("Value: \n" + calculateHand(userHand));//print integer value from calculateHand method
 
-    System.out.println("Your opponent is showing a " + puter);
+    /*System.out.println("Your opponent is showing a " + giveHand(compHand));
 
     System.out.println("What would you like to do? \n1. Hit\n2. Stay\n3. Quit");
     Scanner input = new Scanner(System.in);
@@ -38,13 +60,13 @@ public class Blackjack {
     if(choice == "1"){
       //draw a new card, present value.
     }
-    if else (choice == "2"){
+    else if (choice == "2"){
       //do what the user needs to do
     }
     else{
       break;
     }
-
+*/
 
   }
 
