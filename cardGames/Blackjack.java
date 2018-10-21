@@ -13,18 +13,6 @@ public class Blackjack {
     compHand = new ArrayList<Card>();
   }
 
-  /*public ArrayList<String> giveHand(ArrayList<Card> hand){//I think this needs to be a while loop
-    ArrayList<String> given = new ArrayList<String>();
-    hand.add(d.drawCard());
-    for(int j = 0; j <= hand.size(); j++){
-      hand.get(j).getName();
-      given = hand.get(j).getName();//error = string can't be converted to ArrayList<String> (getName is the string from Card.java)
-    }
-    return given;
-    //System.out.print(userHand);
-  }
-DON'T NEED THIS METHOD. JUST ADD TWO CARDS TO USERHAND AND COMPHAND SEPARATELY IN MAIN
-*/
   public Integer calculateHand(ArrayList<Card> handList){
     int total = 0;
     for(int i = 0; i <= handList.size(); i++){
@@ -42,39 +30,45 @@ DON'T NEED THIS METHOD. JUST ADD TWO CARDS TO USERHAND AND COMPHAND SEPARATELY I
 
     System.out.println("Welcome to Blackjack.");
 
-    for (int i = 0; i <2; i++){
+    for (int i = 0; i <2; i++){//adds 2 cards to userHand
       Card c = b.d.drawCard();
       b.userHand.add(c);
     }
-    System.out.println("Your hand: \n" + b.userHand); //print out cards dealt
-    System.out.println("Value: \n" + b.calculateHand(b.userHand));//print integer value from calculateHand method
+    System.out.println("Your hand: \n" + b.userHand + "\nValue: \n" + b.calculateHand(b.userHand)); //print out cards dealt and integer value from calculateHand method
 
-    for (int n = 0; n <2; n++){
+    for (int n = 0; n <2; n++){//adds 2 cards to compHand
       Card c = b.d.drawCard();
       b.userHand.add(c);
     }
     System.out.println("Your opponent is showing a " + b.userHand);
 
-    /*if (b.d.calculateHand(b.compHand) <= 16){
-      b.d.drawCard(b.userHand);
-    }
-    else{
-      System.out.println(b.compHand);//print compHand
-    }*/
-/*
     System.out.println("What would you like to do? \n1. Hit\n2. Stay\n3. Quit");
     Scanner input = new Scanner(System.in);
     String choice = input.next();
     if(choice == "1"){
-      //draw a new card, present value.
+      b.d.drawCard(b.userHand);
+      System.out.println("Your hand: \n" + b.userHand + "\nYour value:\n" + b.calculateHand(b.userHand));
     }
     else if (choice == "2"){
       //do what the user needs to do
+      if (b.d.calculateHand(b.compHand) <= 16){
+        b.d.drawCard(b.userHand);
+      }
+      else{
+        System.out.println(b.compHand);//print compHand
+      }
     }
     else{
       break;
     }
-*/
+
+//if statement for compHand stuff
+    if (b.d.calculateHand(b.compHand) <= 16){
+      b.d.drawCard(b.userHand);
+    }
+    else{
+      System.out.println(b.compHand);//print compHand
+    }
 
   }
 
