@@ -14,10 +14,21 @@ public class Blackjack {
   }
 
   public Integer calculateHand(ArrayList<Card> handList){
+    int ace = 0;//ace
+    int royal = 0;//jack, king, queen
     int total = 0;
     for(int i = 0; i <= handList.size(); i++){
-      handList.get(i).getValue();
-      total = total + handList.get(i).getValue();
+      if(handList.get(i).getValue() >= 10){
+        royal = 10;//assigns jack, queen, and/or king to equal 10
+        total = total + royal;//adds J/Q/K to total
+      }
+      else if (handList.get(i).getValue() == 1){
+        ace = 11; //assigns ace to have value of 11
+        total = total + ace;//adds ace to total
+      }
+      else if (handList.get(i).getValue()< 10){
+        total = total + handList.get(i).getValue();//adds every other card to total as its orignial value
+      }
     }
     return total;
   }
@@ -33,65 +44,82 @@ public class Blackjack {
 
   public static void main(String[] args) {
 
-    Blackjack b = new Blackjack();//don't forget blackjack object
-    b.d.reset();
-    b.d.shuffle();
+    while(true){//while loop so that user can keep playing game
+      Blackjack b = new Blackjack();
+      b.d.reset();//resets everything
+      b.d.shuffle();//shuffles cards each time
+      b.userHand.clear();//clears user and computer hands
+      b.compHand.clear();
 
-    System.out.println("Welcome to Blackjack.");
+      System.out.println("Welcome to Blackjack.");
 
-    for (int i = 0; i <2; i++){//adds 2 cards to userHand
-      Card c = b.d.drawCard();
-      b.userHand.add(c);
-    }
-    System.out.println("Your hand:\n" + b.userHand + "\nValue: \n" + b.calculateHand(b.userHand)); //print out cards dealt and integer value from calculateHand method
+      b.userHand.add(b.d.drawCard());
+      b.userHand.add(b.d.drawCard());//user draws 2 cards
+      System.out.println("Your hand:\n" + b.cardNames(b.userHand) + "\nValue: \n" + Integer.toString(b.calculateHand(b.userHand))); //print out cards dealt and integer value from calculateHand method
 
-    for (int n = 0; n <2; n++){//adds 2 cards to compHand
-      Card c = b.d.drawCard();
-      b.compHand.add(c);
-    }
-    System.out.println("Your opponent is showing a " + b.compHand.get(1));
+      b.compHand.add(b.d.drawCard());
+      b.compHand.add(b.d.drawCard());
+      System.out.println("The Dealer's hand:\n" + b.cardNames(b.compHand.get(0)));//displays only the dealers first card
 
-    Boolean runProgram = true;
-    Scanner input = new Scanner(System.in);
+      while(b.calculateHand(b.userHand)<21){//while user isn't over 21
+        Scanner input = new Scanner(System.in);
+        String choice = input.next();
 
-    while(runProgram){
-    String choice = input.next();
-    System.out.println("What would you like to do? \n1. Hit\n2. Stay\n3. Quit");
-    if(choice == "1"){
-      b.d.drawCard(b.userHand);
-      System.out.println("Your hand: \n" + b.cardNames(b.userHand) + "\nYour value:\n" + b.calculateHand(b.userHand));
+        System.out.println("What would you like to do? \n1. Hit\n2. Stay\n3. Quit");
 
-
-    }
-
-    else if (choice == "2"){//if we stay, dealer logic starts
-      //do what the comp needs to do
-      System.out.println("Dealer's hand:\n" + b.cardNames(b.compHand.get(1)) + "\nValue:" + b.calculateHand(b.compHand.get(1)));
-      if (b.calculateHand(b.compHand) <= 16){
-        b.d.drawCard(b.userHand);
-      }
-      else{
-        System.out.println("Dealer's hand:\n" + b.compHand + "\nValue:" + b.calculateHand(b.compHand));//print compHand
-        if(b.calculateHand(b.compHand) > 21){
-          System.out.println("Bust!\nYou win!");
-          break;//should go to "do you want to play again?"
+        if(choice.equals("1")){//if user hits then add a card to their hand
+          b.d.drawCard(b.userHand);
+          System.out.println("Your hand: \n" + b.cardNames(b.userHand) + "\nYour value:\n" + Integer.toString(b.calculateHand(b.userHand)));
         }
-        else if(b.calculateHand(b.compHand) < b.calculateHand(b.userHand)){
-          System.out.println("You win!");
-          break;//should go to "do you want to play again?"
+
+        else if (choice.equals("2")){//if user stays, then computer stuff needs to happen.
+          break;
         }
-        else{
-          System.out.println("You lose.");
-          break;//should go to "do you want to play again?"
+
+        else if (choice.equals("3")){
+          System.exit(0);//quit program
         }
       }
-    }
 
-    else{
-      break;
+      while(b.calculateHand(b.compHand)<= 16){//while compHand is less than 16...
+        b.compHand.add(b.d.drawCard());
+        System.out.println("The Dealer's hand:\n" + b.cardNames(b.compHand) + "\nDealer's value:\n" + Integer.toString(b.calculateHand(b.compHand)));//adds a card to dealer's hand until 16 is reached. Shows all of their cards.
       }
-  }
 
+      if (b.calculateHand(b.compHand) == 21){
+        System.out.println("The Dealer has a value of " + Integer.toString(b.calculateHand(b.compHand)) + "\nYou lose.");
+      }
+      else if(b.calculateHand(b.compHand) > 21 && b.calculateHand(b.userHand) <= 21){//if comp is over 21 and user is still under 21 then user wins
+        System.out.println("The dealer busts. You WIN!");
+      }
+      else if(b.calculateHand(b.userHand) == 21){//if user has 21 then they win
+        System.out.println("Your total is "+  Integer.toString(b.calculateHand(b.userHand)) + "\nYou WIN!");
+      }
+      else if(b.calculateHand(b.userHand) > 21 && b.calculateHand(b.compHand) <= 21){//if user is over 21 and comp is less than
+        System.out.println("You bust. You LOSE!");
+      }
+      else if (b.calculateHand(b.userHand) > 21 && b.calculateHand(b.compHand) > 21){//if both are over 21
+        System.out.println("Everyone loses!");
+      }
+      else if (b.calculateHand(b.compHand) > b.calculateHand(b.userHand) && b.calculateHand(b.compHand) < 21 && b.calculateHand(b.userHand) < 21){//if both were less than 21 but the comp was more than user then comp wins
+        System.out.println("\nDealer's value:\n" + Integer.toString(b.calculateHand(b.compHand)) + "Dealer wins.");
+      }
+      else if (b.calculateHand(b.compHand) < b.calculateHand(b.userHand) && b.calculateHand(b.compHand) < 21 && b.calculateHand(b.userHand) < 21){//if both were under 21 but user was more than comp then user wins
+        System.out.println("\nDealer's value:\n" + Integer.toString(b.calculateHand(b.compHand)) + "You WIN!");
+      }
+      else if(b.calculateHand(b.compHand) == b.calculateHand(b.userHand)){//if user and comp had same value then it's a tie
+        System.out.println("\nDealer's value:\n" + Integer.toString(b.calculateHand(b.compHand)) + "It's a tie.");
+      }
+
+      System.out.println("Would you like to play again?\n1. Yes\n2. No"); //choosing to play again or not
+        Scanner input = new Scanner(System.in);
+        String choice2 = input.next(); //if chooses yes then the while loop will continue normally. only way to quit here is to select 2
+        if (choice2.equals("2")){//if chooses no then break from while loop and end program.
+          break;
+        }
+
+
+    }
 
   }
 
