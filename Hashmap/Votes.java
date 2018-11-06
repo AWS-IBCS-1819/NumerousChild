@@ -14,26 +14,29 @@ public class Votes{
       File poll = new File("thevote.txt");
       Scanner thevote = new Scanner(poll);
 
-
+//MR C WORK
       while(thevote.hasNext()){
-        String x = thevote.next();
-        int v = 0;
-        //m.put(x, v);
-
-        if(thevote.next().equals(x)){
-          v = v + 1;
-          m.put(x, v);
+        String temp = thevote.next();
+        if(temp == null){
+          break;
         }
-        System.out.println(m);
+        else{
+          if(m.containsKey(temp)){
+            m.replace(temp, m.get(temp) + 1);
+          }
+          else{
+            m.put(temp, 1);
+          }
+        }
       }
+
+      System.out.println(m);
     }
 
     catch (FileNotFoundException e) {
       e.printStackTrace();
     }
+//END OF MR C WORK
 
-
-
-    //if next line = jake/annie/... then add one to their thing
   }
 }
