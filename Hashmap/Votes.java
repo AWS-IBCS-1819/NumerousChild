@@ -30,7 +30,13 @@ public class Votes{
         }
       }
 
-      System.out.println(m);
+      System.out.println("Here is the running: \n" + m);
+
+//can use an array to hold the keys for our map. then we can loop through the keys to get certain values from the map
+
+//why would we have different types of data structures?
+/*--> each have their values and limitations, the differences allow us to make
+      bridges between their values so that we aren't limited by any one's limitations.*/
     }
 
     catch (FileNotFoundException e) {
