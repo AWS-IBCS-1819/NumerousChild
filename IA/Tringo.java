@@ -107,8 +107,14 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
         }
 
         public void actionPerformed(ActionEvent e) {
-                numClicks++;
-                oops.setText(numClicks + " wrong tries");
+        /*  if (correct){
+            button disappears, next question is displayed.
+          }*/
+        //  else{
+            numClicks++;
+            oops.setText(numClicks + " wrong tries");
+        //  }
+
         }
 
         public void windowClosing(WindowEvent e) {
