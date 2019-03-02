@@ -5,6 +5,7 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
         TextField text = new TextField(50);//20 = length of the TextField
         TextField which = new TextField(20);
         TextField oops = new TextField(20);
+        Label welcome = new Label();
         Button b;
         Button b2;
         Button b3;
@@ -32,6 +33,8 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
                 super(title);
                 setLayout(new FlowLayout());
                 addWindowListener(this);
+                welcome = new Label("Select all values equivalent to:");
+                add(welcome);
                 add(text);
                 b = new Button("cos(60)");
                 add(b);
