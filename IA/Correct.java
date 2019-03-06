@@ -1,34 +1,10 @@
 import java.util.*;
+import java.io.*;
 
 public class Correct{
-  String a = new String("π/2");
-  String c = "√3/2";
-  String d = "π/3";
-  String e = "0";
-  String f = "√2/2";
-  String g = "1/2";
-  String h = "π/6";
-  String i = "π/4";
-  String j = "1";
-  String k = "√2/3";
-  String l = "√3";
-  String m = "2";
-  String n = "2√3/3";
-  ArrayList questions = new ArrayList(String);
-  questions.add(a);//b3
-  questions.add(c);//b6, b13
-  questions.add(d);//b19
-  questions.add(e);//b4, b5, b12
-  questions.add(f);//b10, b17
-  questions.add(g);//b, b19
-  answes.add(h);//b16
-  questions.add(i);//b7
-  questions.add(j);//b8, b11, b20
-  questions.add(k);//b2
-  questions.add(l);//b14
-  questions.add(m);//b15
-  questions.add(n);//b18
-  String display;
+
+
+  //String display;
 
   /*public Check(){
     for(int z=0; z<13; z++){
@@ -38,11 +14,40 @@ public class Correct{
   }*/
 
   public static void main(String[] args) {
+    ArrayList<String> questions = new ArrayList<String>();//an array list of all the questions that will be outputted with their corresponding button/answer commented next to them
+    questions.add("π/2");//b3 -0
+    questions.add("√3/2");//b6, b13 -1
+    questions.add("π/3");//b19 -2
+    questions.add("0");//b4, b5, b12 -3
+    questions.add("√2/2");//b10, b17 -4
+    questions.add("1/2");//b, b9 -5
+    questions.add("π/6");//b16 -6
+    questions.add("π/4");//b7 -7
+    questions.add("1");//b8, b11, b20 -8
+    questions.add("√2/3");//b2 -9
+    questions.add("√3");//b14 -10
+    questions.add("2");//b15 -11
+    questions.add("2√3/3");//b18 -12
     System.out.println(questions);
+
+    ArrayList<Integer> sheet = new ArrayList<Integer>();
+    int i = 0;
+    for(int j=0; j<13; j++){
+      questions.get(j);
+      i = j;
+      sheet.add(i);
+    }
+    System.out.println(sheet);
+
+
+
   }
 
 
 }
+/*
+linked list
+or create class with answer key to compare buttons w/ answers*/
 
 /*
 Basically what I want to do is if a certain question is being displayed, then only
