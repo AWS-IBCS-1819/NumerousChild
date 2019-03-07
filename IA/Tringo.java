@@ -211,10 +211,10 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
         public void actionPerformed(ActionEvent e) {
           Correct c = new Correct();
           for(int l=0; l<13; l++){
-            text.setText(c.question.get(l));
+            text.setText(c.questions.get(l));
             if (quest == c.sheet.get(l)){//l = index for questions loop
             //button disappears
-              if (quest == 1||4||5){
+              if (quest == 1||4||5){//can't use "||" symbol because not boolean
                 //question remains until one more correct button has been clicked
               }
               else if(quest == 3||8){

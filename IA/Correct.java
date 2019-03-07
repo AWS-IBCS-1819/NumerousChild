@@ -31,15 +31,28 @@ public class Correct{
 
   }
 
-  public static void main(String[] args) {
+  public void setQuest(ArrayList<String> quests){
+    questions = quests;
+  }
+
+  public void setSheet(ArrayList<Integer> cheat){
+    sheet = cheat;
+  }
+
+  public ArrayList getQuest(){
+    return questions;
+  }
+
+  public ArrayList getSheet(){
+    return sheet;
+  }
+
+  /*public static void main(String[] args) {
     Correct c = new Correct();
 
     System.out.println(c.questions);
     System.out.println(c.sheet);
-
-
-
-  }
+  }*/
 
 
 }
