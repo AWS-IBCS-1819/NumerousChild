@@ -3,18 +3,11 @@ import java.io.*;
 
 public class Correct{
 
+  ArrayList<String> questions;
+  ArrayList<Integer> sheet;
 
-  //String display;
+  public Correct(){
 
-  /*public Check(){
-    for(int z=0; z<13; z++){
-      display = questions.get(z);
-      return display;
-    }
-  }*/
-
-  public static void main(String[] args) {
-    ArrayList<String> questions = new ArrayList<String>();//an array list of all the questions that will be outputted with their corresponding button/answer commented next to them
     questions.add("π/2");//b3 -0
     questions.add("√3/2");//b6, b13 -1
     questions.add("π/3");//b19 -2
@@ -28,16 +21,21 @@ public class Correct{
     questions.add("√3");//b14 -10
     questions.add("2");//b15 -11
     questions.add("2√3/3");//b18 -12
-    System.out.println(questions);
 
-    ArrayList<Integer> sheet = new ArrayList<Integer>();
-    int i = 0;
-    for(int j=0; j<13; j++){
-      questions.get(j);
-      i = j;
-      sheet.add(i);
+    int j = 0;
+    for(int i=0; i<13; i++){
+      questions.get(i);
+      j=i;
+      sheet.add(j);
     }
-    System.out.println(sheet);
+
+  }
+
+  public static void main(String[] args) {
+    Correct c = new Correct();
+
+    System.out.println(c.questions);
+    System.out.println(c.sheet);
 
 
 
@@ -47,7 +45,11 @@ public class Correct{
 }
 /*
 linked list
-or create class with answer key to compare buttons w/ answers*/
+or create class with answer key to compare buttons w/ answers
+*/
+
+
+
 
 /*
 Basically what I want to do is if a certain question is being displayed, then only

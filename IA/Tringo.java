@@ -209,10 +209,10 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
         }
 
         public void actionPerformed(ActionEvent e) {
-
+          Correct c = new Correct();
           for(int l=0; l<13; l++){
-            text.setText(question.get(l));
-            if (quest == sheet.get(l)){//l = index for questions loop
+            text.setText(c.question.get(l));
+            if (quest == c.sheet.get(l)){//l = index for questions loop
             //button disappears
               if (quest == 1||4||5){
                 //question remains until one more correct button has been clicked
