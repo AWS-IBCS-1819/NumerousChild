@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Tringo extends Frame implements WindowListener,ActionListener {
-  Correct c;
+  Correct cor;//brings in Correct class as object
         TextField text = new TextField(50);//50 = length of the TextField
         TextField which = new TextField(15);//question number will be displayed
         TextField oops = new TextField(15);//number of wrong tries will be displayed
@@ -203,49 +203,59 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
 
         }
 
-        public static void main(String[] args) {
-                Tringo myWindow = new Tringo("TRINGO!");
-                myWindow.setSize(500,400);
-                myWindow.setVisible(true);
-        }
+      public static void main(String[] args) {
+          Tringo myWindow = new Tringo("TRINGO!");
+          myWindow.setSize(500,400);
+          myWindow.setVisible(true);
+      }
 
-        public void actionPerformed(ActionEvent e) {
-          /*for(int i=0; i<13; i++){
-            text.setText(c.questions.get(i));
-            if (quest == c.sheet.get(i)){//i = index for questions loop
+      public void actionPerformed(ActionEvent e) {
+        Component c = (Component)e.getSource();
+        for(int i=0; i<13; i++){//this isn't working and I think it's because of the loop
+          text.setText(cor.questions.get(i));
+          if (quest == cor.sheet.get(i)){//i = index for questions loop
             //button disappears
-              if (quest == 1||4||5){//can't use "||" symbol because not boolean
-                //question remains until one more correct button has been clicked
-              }
-              else if(quest == 3||8){
-                //question remains until two more correct buttons have been clicked
-              }
-              else{
-                //next question displayed
-              }
+            c.setVisible(false);
+
+            if(quest == 1){
+              //question remains until one other correct button is clicked
             }
-            else{
-              numClicks++;
-              oops.setText("Wrong Tries: " + numClicks);//since I haven't set up answer-question checker, everytime a button is clicked it adds one to wrong tries
+            else if(quest == 4){
+              //question remains until one other correct button is clicked
             }
-          }*/
-          numClicks++;
-          oops.setText("Wrong Tries: " + numClicks); //everytime you click a button, it increases wrong tries counter and prints it out
-          text.setText("testing " + quest); //setting each button to an integer worked!
-
-
+            else if(quest == 5){
+              //question remains until one other correct button is clicked
+            }
+            else if(quest == 3){
+                //question remains until two other correct buttons are clicked
+            }
+            else if(quest == 8){
+              //question remains until two other correct buttons are clicked
+            }
+          }
+          else{
+            c.setVisible(true);
+            numClicks++;
+            oops.setText("Wrong Tries: " + numClicks);//since I haven't set up answer-question checker, everytime a button is clicked it adds one to wrong tries
+          }
         }
+        /*numClicks++;
+        oops.setText("Wrong Tries: " + numClicks); //everytime you click a button, it increases wrong tries counter and prints it out
+        text.setText("testing " + quest); //setting each button to an integer worked!
+        */
 
-        public void windowClosing(WindowEvent e) {
-                dispose();
-                System.exit(0);
-        }
+    }
 
-        public void windowOpened(WindowEvent e) {}
-        public void windowActivated(WindowEvent e) {}
-        public void windowIconified(WindowEvent e) {}
-        public void windowDeiconified(WindowEvent e) {}
-        public void windowDeactivated(WindowEvent e) {}
-        public void windowClosed(WindowEvent e) {}
+      public void windowClosing(WindowEvent e) {
+              dispose();
+              System.exit(0);
+      }
+
+      public void windowOpened(WindowEvent e) {}
+      public void windowActivated(WindowEvent e) {}
+      public void windowIconified(WindowEvent e) {}
+      public void windowDeiconified(WindowEvent e) {}
+      public void windowDeactivated(WindowEvent e) {}
+      public void windowClosed(WindowEvent e) {}
 
 }
