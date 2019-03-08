@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Tringo extends Frame implements WindowListener,ActionListener {
+  Correct c;
         TextField text = new TextField(50);//50 = length of the TextField
         TextField which = new TextField(15);//question number will be displayed
         TextField oops = new TextField(15);//number of wrong tries will be displayed
@@ -209,10 +210,9 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
         }
 
         public void actionPerformed(ActionEvent e) {
-          Correct c = new Correct();
-          for(int l=0; l<13; l++){
-            text.setText(c.questions.get(l));
-            if (quest == c.sheet.get(l)){//l = index for questions loop
+          /*for(int i=0; i<13; i++){
+            text.setText(c.questions.get(i));
+            if (quest == c.sheet.get(i)){//i = index for questions loop
             //button disappears
               if (quest == 1||4||5){//can't use "||" symbol because not boolean
                 //question remains until one more correct button has been clicked
@@ -228,7 +228,10 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
               numClicks++;
               oops.setText("Wrong Tries: " + numClicks);//since I haven't set up answer-question checker, everytime a button is clicked it adds one to wrong tries
             }
-          }
+          }*/
+          numClicks++;
+          oops.setText("Wrong Tries: " + numClicks); //everytime you click a button, it increases wrong tries counter and prints it out
+          text.setText("testing " + quest); //setting each button to an integer worked!
 
 
         }
