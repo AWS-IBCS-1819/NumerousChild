@@ -1,43 +1,50 @@
+import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 
 public class Tringo extends Frame implements WindowListener,ActionListener {
-  Correct cor;//brings in Correct class as object
-        TextField text = new TextField(50);//50 = length of the TextField
-        TextField which = new TextField(15);//question number will be displayed
-        TextField oops = new TextField(15);//number of wrong tries will be displayed
-        Label welcome = new Label();
-        Button b;
-        Button b2;
-        Button b3;
-        Button b4;
-        Button b5;
-        Button b6;
-        Button b7;
-        Button b8;
-        Button b9;
-        Button b10;
-        Button b11;
-        Button b12;
-        Button b13;
-        Button b14;
-        Button b15;
-        Button b16;
-        Button b17;
-        Button b18;
-        Button b19;
-        Button b20;
-        private int numClicks = 0;
-        public int quest = 0;
+  //Correct cor;//brings in Correct class as object
+  TextField text = new TextField(50);//50 = length of the TextField
+  TextField which = new TextField(15);//question number will be displayed
+  TextField oops = new TextField(15);//number of wrong tries will be displayed
+  Label welcome = new Label();
+  Button b;
+  Button b2;
+  Button b3;
+  Button b4;
+  Button b5;
+  Button b6;
+  Button b7;
+  Button b8;
+  Button b9;
+  Button b10;
+  Button b11;
+  Button b12;
+  Button b13;
+  Button b14;
+  Button b15;
+  Button b16;
+  Button b17;
+  Button b18;
+  Button b19;
+  Button b20;
+
+  ArrayList<String> questions;
+  ArrayList<Integer> sheet;
+
+  private int numClicks = 0;
+  public int quest = 0;
 
         public Tringo(String title) {
 
                 super(title);
                 setLayout(new FlowLayout());
                 addWindowListener(this);
+
                 welcome = new Label("Select all values equivalent to:");
                 add(welcome);
                 add(text);
+
                 b = new Button("cos(60)");//adding each button to the GUI in specific order, each are labeled with answers to questions
                 add(b);
                 b2 = new Button("tan(30)");
@@ -78,9 +85,32 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
                 add(b19);
                 b20 = new Button("cos(0)");
                 add(b20);
+
                 add(which);
                 add(oops);
-                b.addActionListener(this);//adding an ActionListenerto each button so that I can add elements/methods to button clicks
+
+            questions.add("π/2");//b3 -0
+            questions.add("√3/2");//b6, b13 -1
+            questions.add("π/3");//b19 -2
+            questions.add("0");//b4, b5, b12 -3
+            questions.add("√2/2");//b10, b17 -4
+            questions.add("1/2");//b, b9 -
+            questions.add("π/6");//b16 -6
+            questions.add("π/4");//b7 -7
+            questions.add("1");//b8, b11, b20 -8
+            questions.add("√2/3");//b2 -9
+            questions.add("√3");//b14 -10
+            questions.add("2");//b15 -11
+            questions.add("2√3/3");//b18 -12
+
+            int j = 0;
+            for(int i=0; i<13; i++){
+              questions.get(i);
+              j=i;
+              sheet.add(j);
+            }
+
+                b.addActionListener(this);//adding an ActionListener to each button so that I can add elements/methods to button clicks
                 b.addActionListener(new ActionListener() {//second ActionListener to set button equal to an int value that corresponds to the question number
                   public void actionPerformed(ActionEvent e) {
                     quest = 5;
@@ -212,8 +242,8 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
       public void actionPerformed(ActionEvent e) {
         Component c = (Component)e.getSource();
         for(int i=0; i<13; i++){//this isn't working and I think it's because of the loop
-          text.setText(cor.questions.get(i));
-          if (quest == cor.sheet.get(i)){//i = index for questions loop
+          text.setText(questions.get(i));
+          /*if (quest == cor.sheet.get(i)){//i = index for questions loop
             //button disappears
             c.setVisible(false);
 
@@ -232,12 +262,15 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
             else if(quest == 8){
               //question remains until two other correct buttons are clicked
             }
-          }
-          else{
+            else{
+              text.setText(cor.questions.get(i+1));//moves to next question
+            }
+          }*/
+          //else{
             c.setVisible(true);
             numClicks++;
             oops.setText("Wrong Tries: " + numClicks);//since I haven't set up answer-question checker, everytime a button is clicked it adds one to wrong tries
-          }
+          //}
         }
         /*numClicks++;
         oops.setText("Wrong Tries: " + numClicks); //everytime you click a button, it increases wrong tries counter and prints it out
