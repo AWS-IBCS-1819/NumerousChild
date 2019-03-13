@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Tringo extends Frame implements WindowListener,ActionListener {
-  //Correct cor;//brings in Correct class as object
+  Correct cor;//brings in Correct class as object
   TextField text = new TextField(50);//50 = length of the TextField
   TextField which = new TextField(15);//question number will be displayed
   TextField oops = new TextField(15);//number of wrong tries will be displayed
@@ -29,67 +29,71 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
   Button b19;
   Button b20;
 
-  ArrayList<String> questions;
-  ArrayList<Integer> sheet;
+  //ArrayList<String> questions;
+  //ArrayList<Integer> sheet;
 
   private int numClicks = 0;
-  public int quest = 0;
+  private int quest = 0;
+  private int i = 0;
 
-        public Tringo(String title) {
+    public Tringo(String title) {
 
-                super(title);
-                setLayout(new FlowLayout());
-                addWindowListener(this);
+        super(title);
+        cor = new Correct();
+        setLayout(new FlowLayout());
+        addWindowListener(this);
 
-                welcome = new Label("Select all values equivalent to:");
-                add(welcome);
-                add(text);
+        welcome = new Label("Select all values equivalent to:");
+        add(welcome);
+        add(text);
 
-                b = new Button("cos(60)");//adding each button to the GUI in specific order, each are labeled with answers to questions
-                add(b);
-                b2 = new Button("tan(30)");
-                add(b2);
-                b3 = new Button("90º");
-                add(b3);
-                b4 = new Button("0º");
-                add(b4);
-                b5 = new Button("sin(0)");
-                add(b5);
-                b6 = new Button("sin(60)");
-                add(b6);
-                b7 = new Button("45º");
-                add(b7);
-                b8 = new Button("sin(90)");
-                add(b8);
-                b9 = new Button("sin(30)");
-                add(b9);
-                b10 = new Button("cos(45)");
-                add(b10);
-                b11 = new Button("tan(45)");
-                add(b11);
-                b12 = new Button("cos(90)");
-                add(b12);
-                b13 = new Button("cos(30)");
-                add(b13);
-                b14 = new Button("tan(60)");
-                add(b14);
-                b15 = new Button("sec(60)");
-                add(b15);
-                b16 = new Button("30º");
-                add(b16);
-                b17 = new Button("sin(45)");
-                add(b17);
-                b18 = new Button("csc(60)");
-                add(b18);
-                b19 = new Button("60º");
-                add(b19);
-                b20 = new Button("cos(0)");
-                add(b20);
+        b = new Button("cos(60)");//adding each button to the GUI in specific order, each are labeled with answers to questions
+        add(b);
+        b2 = new Button("tan(30)");
+        add(b2);
+        b3 = new Button("90º");
+        add(b3);
+        b4 = new Button("0º");
+        add(b4);
+        b5 = new Button("sin(0)");
+        add(b5);
+        b6 = new Button("sin(60)");
+        add(b6);
+        b7 = new Button("45º");
+        add(b7);
+        b8 = new Button("sin(90)");
+        add(b8);
+        b9 = new Button("sin(30)");
+        add(b9);
+        b10 = new Button("cos(45)");
+        add(b10);
+        b11 = new Button("tan(45)");
+        add(b11);
+        b12 = new Button("cos(90)");
+        add(b12);
+        b13 = new Button("cos(30)");
+        add(b13);
+        b14 = new Button("tan(60)");
+        add(b14);
+        b15 = new Button("sec(60)");
+        add(b15);
+        b16 = new Button("30º");
+        add(b16);
+        b17 = new Button("sin(45)");
+        add(b17);
+        b18 = new Button("csc(60)");
+        add(b18);
+        b19 = new Button("60º");
+        add(b19);
+        b20 = new Button("cos(0)");
+        add(b20);
 
-                add(which);
-                add(oops);
+        text.setText(cor.questions.get(0));//automatically prints first question in TextField
 
-            questions.add("π/2");//b3 -0
+        add(which);
+        add(oops);
+
+            /*questions.add("π/2");//b3 -0
             questions.add("√3/2");//b6, b13 -1
             questions.add("π/3");//b19 -2
             questions.add("0");//b4, b5, b12 -3
@@ -108,128 +112,148 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
               questions.get(i);
               j=i;
               sheet.add(j);
-            }
+            }*/
 
-                b.addActionListener(this);//adding an ActionListener to each button so that I can add elements/methods to button clicks
+
                 b.addActionListener(new ActionListener() {//second ActionListener to set button equal to an int value that corresponds to the question number
                   public void actionPerformed(ActionEvent e) {
                     quest = 5;
                   }
                 });
-                b2.addActionListener(this);
+                b.addActionListener(this);//adding an ActionListener to each button so that I can add elements/methods to button clicks
+
                 b2.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 9;
                   }
                 });
-                b3.addActionListener(this);
+                b2.addActionListener(this);
+
                 b3.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 0;
                   }
                 });
-                b4.addActionListener(this);
+                b3.addActionListener(this);
+
                 b4.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 3;
                   }
                 });
-                b5.addActionListener(this);
+                b4.addActionListener(this);
+
                 b5.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 3;
                   }
                 });
-                b6.addActionListener(this);
+                b5.addActionListener(this);
+
                 b6.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 1;
                   }
                 });
-                b7.addActionListener(this);
+                b6.addActionListener(this);
+
                 b7.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 7;
                   }
                 });
-                b8.addActionListener(this);
+                b7.addActionListener(this);
+
                 b8.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 8;
                   }
                 });
-                b9.addActionListener(this);
+                b8.addActionListener(this);
+
                 b9.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 5;
                   }
                 });
-                b10.addActionListener(this);
+                b9.addActionListener(this);
+
                 b10.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 4;
                   }
                 });
-                b11.addActionListener(this);
+                b10.addActionListener(this);
+
                 b11.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 8;
                   }
                 });
-                b12.addActionListener(this);
+                b11.addActionListener(this);
+
                 b12.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 3;
                   }
                 });
-                b13.addActionListener(this);
+                b12.addActionListener(this);
+
                 b13.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 1;
                   }
                 });
-                b14.addActionListener(this);
+                b13.addActionListener(this);
+
                 b14.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 10;
                   }
                 });
-                b15.addActionListener(this);
+                b14.addActionListener(this);
+
                 b15.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 11;
                   }
                 });
-                b16.addActionListener(this);
+                b15.addActionListener(this);
+
                 b16.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 6;
                   }
                 });
-                b17.addActionListener(this);
+                b16.addActionListener(this);
+
                 b17.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 4;
                   }
                 });
-                b18.addActionListener(this);
+                b17.addActionListener(this);
+
                 b18.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 12;
                   }
                 });
-                b19.addActionListener(this);
+                b18.addActionListener(this);
+
                 b19.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 2;
                   }
                 });
-                b20.addActionListener(this);
+                b19.addActionListener(this);
+
                 b20.addActionListener(new ActionListener() {
                   public void actionPerformed(ActionEvent e) {
                     quest = 8;
                   }
                 });
+                b20.addActionListener(this);
 
         }
 
@@ -240,14 +264,20 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
       }
 
       public void actionPerformed(ActionEvent e) {
-        Component c = (Component)e.getSource();
-        for(int i=0; i<13; i++){//this isn't working and I think it's because of the loop
-          text.setText(questions.get(i));
-          /*if (quest == cor.sheet.get(i)){//i = index for questions loop
+        //int i = 0;
+        /*text.setText(cor.questions.get(i)); //this should probably not be in the actionPerformed...
+        Component c = (Component)e.getSource();*/
+      //  for(int i=0; i<13; i++){
+          text.setText(cor.questions.get(i));
+          which.setText("i is " + i);
+          Component c = (Component)e.getSource();
+
+          if (quest == cor.sheet.get(i)){//i = index for questions loop
             //button disappears
             c.setVisible(false);
+            i=i+1;
 
-            if(quest == 1){
+            /*if(quest == 1){
               //question remains until one other correct button is clicked
             }
             else if(quest == 4){
@@ -263,15 +293,17 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
               //question remains until two other correct buttons are clicked
             }
             else{
-              text.setText(cor.questions.get(i+1));//moves to next question
-            }
-          }*/
-          //else{
+              //move to next question
+              i = i+1;
+            }*/
+          }
+
+          else{
             c.setVisible(true);
             numClicks++;
             oops.setText("Wrong Tries: " + numClicks);//since I haven't set up answer-question checker, everytime a button is clicked it adds one to wrong tries
-          //}
-        }
+          }
+      //  }
         /*numClicks++;
         oops.setText("Wrong Tries: " + numClicks); //everytime you click a button, it increases wrong tries counter and prints it out
         text.setText("testing " + quest); //setting each button to an integer worked!

@@ -8,6 +8,8 @@ public class Correct{
 
   public Correct(){
 
+    questions = new ArrayList<String>();
+    sheet = new ArrayList<Integer>();
     questions.add("π/2");//b3 -0
     questions.add("√3/2");//b6, b13 -1
     questions.add("π/3");//b19 -2
