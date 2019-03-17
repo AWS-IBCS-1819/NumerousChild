@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 public class Tringo extends Frame implements WindowListener,ActionListener {
   Correct cor;//brings in Correct class as object
-  TextField text = new TextField(50);//50 = length of the TextField
+  TextField text = new TextField(5);//50 = length of the TextField
   TextField which = new TextField(15);//question number will be displayed
   TextField oops = new TextField(15);//number of wrong tries will be displayed
   Label welcome = new Label();
@@ -28,6 +28,8 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
   Button b18;
   Button b19;
   Button b20;
+  Button start;
+  Button next;
 
   //ArrayList<String> questions;
   //ArrayList<Integer> sheet;
@@ -35,6 +37,7 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
   private int numClicks = 0;
   private int quest = 0;
   private int i = 0;
+  private int j = 0;
 
     public Tringo(String title) {
 
@@ -46,6 +49,27 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
         welcome = new Label("Select all values equivalent to:");
         add(welcome);
         add(text);
+
+        start = new Button("Start");
+        add(start);
+        start.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent e) {
+            text.setText(cor.questions.get(0));
+            next.setVisible(false);
+            start.setVisible(false);
+          }
+        });
+        next = new Button("Next Question");
+        add(next);
+        next.addActionListener(new ActionListener(){
+          public void actionPerformed(ActionEvent e){
+            j=j+1;
+            text.setText(cor.questions.get(j));
+            next.setVisible(false);
+          }
+        });
+
+
 
         b = new Button("cos(60)");//adding each button to the GUI in specific order, each are labeled with answers to questions
         add(b);
@@ -88,10 +112,11 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
         b20 = new Button("cos(0)");
         add(b20);
 
-        text.setText(cor.questions.get(0));//automatically prints first question in TextField
+        //text.setText(cor.questions.get(0));//automatically prints first question in TextField
 
         add(which);
         add(oops);
+
 
             /*questions.add("π/2");//b3 -0
             questions.add("√3/2");//b6, b13 -1
@@ -268,33 +293,40 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
         /*text.setText(cor.questions.get(i)); //this should probably not be in the actionPerformed...
         Component c = (Component)e.getSource();*/
       //  for(int i=0; i<13; i++){
-          text.setText(cor.questions.get(i));
+          //text.setText(cor.questions.get(i));
           which.setText("i is " + i);
           Component c = (Component)e.getSource();
 
           if (quest == cor.sheet.get(i)){//i = index for questions loop
             //button disappears
             c.setVisible(false);
+            next.setVisible(true);
             i=i+1;
+            which.setText("i is " + i);//worked for the first question and transition over to second question but didn't work for the second answer of second question.
+
 
             /*if(quest == 1){
               //question remains until one other correct button is clicked
+              c.setVisible(false);
             }
             else if(quest == 4){
               //question remains until one other correct button is clicked
+              c.setVisible(false);
             }
             else if(quest == 5){
               //question remains until one other correct button is clicked
+              c.setVisible(false);
             }
             else if(quest == 3){
                 //question remains until two other correct buttons are clicked
+                c.setVisible(false);
             }
             else if(quest == 8){
               //question remains until two other correct buttons are clicked
+              c.setVisible(false);
             }
             else{
-              //move to next question
-              i = i+1;
+              next.setVisible(true);
             }*/
           }
 
