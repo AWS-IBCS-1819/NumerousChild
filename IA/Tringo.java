@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class Tringo extends Frame implements WindowListener,ActionListener {
   Correct cor;//brings in Correct class as object
   TextField text = new TextField(5);//50 = length of the TextField
-  TextField which = new TextField(15);//question number will be displayed
+  TextField which = new TextField(20);//question number will be displayed
   TextField oops = new TextField(15);//number of wrong tries will be displayed
   Label welcome = new Label();
   Button b;
@@ -57,8 +57,6 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
         add(start);
         next = new Button("Next Question");
         add(next);
-
-
 
         b = new Button("cos(60)");//adding each button to the GUI in specific order, each are labeled with answers to questions
         add(b);
@@ -359,7 +357,7 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
             next.setVisible(true);
             i=i+1;
             if(i>j){
-              which.setText("click Next");
+              which.setText("click Next Question");
             }
             //which.setText("i is " + i);//worked for the first question and transition over to second question but didn't work for the second answer of second question.
 
@@ -370,7 +368,7 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
               b13.setVisible(false);*/
               b6.setBackground(Color.blue);
               b13.setBackground(Color.blue);
-              color.setText("blue:\nsin(60)\ncos(30)");
+              color.setText("blue: √3/2\n  sin(60)\n  cos(30)");
             }
             else if(quest == 4){
               //question remains until one other correct button is clicked
@@ -378,8 +376,8 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
               b17.setVisible(false);*/
               b10.setBackground(Color.cyan);
               b17.setBackground(Color.cyan);
-              color.setText("blue:\nsin(60)\ncos(30)\n\ncyan:\ncos(45)\nsin(45)");
-              color2.setText("yellow:\n0º\nsin(0)\ncos(90)");
+              color.setText("blue: √3/2\n  sin(60)\n  cos(30)\n\ncyan: √2/2\n  cos(45)\n  sin(45)");
+              color2.setText("yellow: 0\n  0º\n  sin(0)\n  cos(90)");
 
             }
             else if(quest == 5){
@@ -388,8 +386,8 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
               b9.setVisible(false);*/
               b.setBackground(Color.green);
               b9.setBackground(Color.green);
-              color.setText("blue:\nsin(60)\ncos(30)\n\ncyan:\ncos(45)\nsin(45)\n\ngreen:\ncos(60)\nsin(30)");
-              color2.setText("yellow:\n0º\nsin(0)\ncos(90)");
+              color.setText("blue: √3/2\n  sin(60)\n  cos(30)\n\ncyan: √2/2\n  cos(45)\n  sin(45)\n\ngreen: 1/2\n  cos(60)\n  sin(30)");
+              color2.setText("yellow: 0\n  0º\n  sin(0)\n  cos(90)");
 
             }
             else if(quest == 3){
@@ -400,8 +398,8 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
                 b4.setBackground(Color.yellow);
                 b5.setBackground(Color.yellow);
                 b12.setBackground(Color.yellow);
-                color.setText("blue:\nsin(60)\ncos(30)");
-                color2.setText("yellow:\n0º\nsin(0)\ncos(90)");
+                color.setText("blue: √3/2\n  sin(60)\n  cos(30)");
+                color2.setText("yellow: 0\n  0º\n  sin(0)\n  cos(90)");
 
             }
             else if(quest == 8){
@@ -412,8 +410,8 @@ public class Tringo extends Frame implements WindowListener,ActionListener {
               b8.setBackground(Color.red);
               b11.setBackground(Color.red);
               b20.setBackground(Color.red);
-              color.setText("blue:\nsin(60)\ncos(30)\n\ncyan:\ncos(45)\nsin(45)\n\ngreen:\ncos(60)\nsin(30)");
-              color2.setText("yellow:\n0º\nsin(0)\ncos(90)\n\nred:\nsin(90)\nan(45)\ncos(0)");
+              color.setText("blue: √3/2\n  sin(60)\n  cos(30)\n\ncyan: √2/2\n  cos(45)\n  sin(45)\n\ngreen: 1/2\n  cos(60)\n  sin(30)");
+              color2.setText("yellow: 0\n  0º\n  sin(0)\n  cos(90)\n\nred: 1\n  sin(90)\n  tan(45)\n  cos(0)");
 
             }
             else if(quest == 12){
