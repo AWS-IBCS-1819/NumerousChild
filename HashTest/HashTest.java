@@ -87,9 +87,9 @@ going to treat the integer as a String so I can use charAt.
         else if(lol.equals("8")){
           System.out.print("307");
         }
-        else if(lol.equals("9")){
+        /*else if(lol.equals("9")){
           System.out.print("00004");
-        }
+        }Commenting out this so that if there is a nine in the biggest digits it just won't be included.*/
       }
 
       while(i>2){
@@ -111,9 +111,9 @@ going to treat the integer as a String so I can use charAt.
         else if(lol.equals("5")){
           System.out.print("00");
         }
-        else if(lol.equals("6")){
+        /*else if(lol.equals("6")){
           System.out.print("7865");
-        }
+        }*/
         else if(lol.equals("7")){
           System.out.print("70");
         }
